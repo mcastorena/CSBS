@@ -16,7 +16,6 @@ public class runMain {
     public static void main(String[] args) {
 	// btw this is our main function now.
 	// all it does is make the gameHandler instance
-	// notice me senpi derp
 	gameHandler game = new gameHandler();
 	// on another note, GUI.java, gameMap.java, and setUp.java are unused atm.
     }

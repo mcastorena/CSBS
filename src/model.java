@@ -24,9 +24,9 @@ public class model {
     
     
     public void createPlayers(){
-        player player1 = new player(6,6,6,"Miguel");
-        player player2 = new player(1,2,3,"Kevin");
-        player player3 = new player(4,1,0,"Ivan");
+        player player1 = new player(6,6,6,"Miguel",1);
+        player player2 = new player(1,2,3,"Kevin",1);
+        player player3 = new player(4,1,0,"Ivan",1);
         
         this.players.add(player1);
         this.players.add(player2);
