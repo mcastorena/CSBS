@@ -2,6 +2,8 @@
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics2D;
+import java.util.ArrayList;
+import javax.swing.DefaultListModel;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -18,6 +20,7 @@ import javax.swing.JScrollPane;
  */
 public class GUI extends javax.swing.JFrame {
    static gameMap myMap = new gameMap();
+   static model myModel = new model();
 
     /**
      * Creates new form GUI
@@ -26,6 +29,8 @@ public class GUI extends javax.swing.JFrame {
         initComponents();
         this.setTitle("CECS BS in CS Game First Iteration");
         ScrollPane.getViewport().add(myMap, WIDTH);
+        myMap.myModel = this.myModel;
+        setRoomList();
     }
 
     /**
@@ -37,7 +42,7 @@ public class GUI extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jTextField1 = new javax.swing.JTextField();
+        humanPlayerField = new javax.swing.JTextField();
         gameStatsField = new javax.swing.JTextField();
         cardImagePanel = new javax.swing.JLabel();
         playCardButton = new javax.swing.JButton();
@@ -48,7 +53,8 @@ public class GUI extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jTextField1.setText("jTextField1");
+        humanPlayerField.setFont(new java.awt.Font("Monospaced", 1, 16)); // NOI18N
+        humanPlayerField.setText("locationField");
 
         gameStatsField.setText("gameStatsField");
 
@@ -57,12 +63,6 @@ public class GUI extends javax.swing.JFrame {
         playCardButton.setText("Play Card");
 
         drawCardButton.setText("Draw Card");
-
-        roomList.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
 
         moveButton.setText("Move");
         moveButton.addActionListener(new java.awt.event.ActionListener() {
@@ -90,7 +90,7 @@ public class GUI extends javax.swing.JFrame {
                         .addGap(27, 27, 27)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(gameStatsField)
-                            .addComponent(jTextField1))))
+                            .addComponent(humanPlayerField))))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -103,7 +103,7 @@ public class GUI extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(gameStatsField, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jTextField1))
+                        .addComponent(humanPlayerField))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(layout.createSequentialGroup()
@@ -125,54 +125,93 @@ public class GUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void moveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_moveButtonActionPerformed
-    myMap.handleMove();
-    }//GEN-LAST:event_moveButtonActionPerformed
-
+        int getRoom = myMap.myModel.players.get(0).roomNumber;
+        for(int i = 0; i <3;i++){
+        myMap.myModel.players.get(i).roomNumber = myMap.myModel.rooms.get(getRoom).adjacentRooms.get(getSelectedRoom()).intValue();
+    }
+    setRoomList();
+    myMap.paintComponent(myMap.getGraphics());
     
+    }//GEN-LAST:event_moveButtonActionPerformed
+    
+    public int getSelectedRoom(){
+        return roomList.getSelectedIndex();
+    }
+    
+    public void setRoomList(){
+        
+        player tempPlayer = myMap.myModel.players.get(0);
+    
+    int room = tempPlayer.getRoom();
+    ArrayList<Integer> roomList = (myMap.myModel.rooms.get(room)).adjacentRooms;
+    System.out.println(myMap.myModel.rooms.get(room).name);
+    DefaultListModel adjacentRooms = new DefaultListModel();
+    System.out.println(roomList.size());
+    for (int i = 0; i < roomList.size(); i++) {
+      adjacentRooms.addElement(myMap.myModel.rooms.get(roomList.get(i).intValue()).name);
+      System.out.println(myMap.myModel.rooms.get(roomList.get(i).intValue()).name);
+    }
+    this.roomList.setModel(adjacentRooms);
+    }
+    
+    public void setStats(){
+        
+    }
+    
+    public void setHumanPlayerField(){
+        String name = myMap.myModel.players.get(0).name;
+        
+    }
+    
+//    public void setLocationField(){
+//       String name = myMap.myModel.players.get(0).name;
+//       int myRoom = myMap.myModel.players.get(0).roomNumber;
+//       String location = myMap.myModel.rooms.get(myRoom).name;
+//       humanPlayerField.setText("You are "+name+" you are in room number "+myRoom+": "+location);
+//    }
+//    
     /**
      * @param args the command line arguments
      */
-    // we dont need this anymore
-//    public static void main(String args[]) {
-//        /* Set the Nimbus look and feel */
-//        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-//        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-//         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-//         */
-//        try {
-//            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-//                if ("Nimbus".equals(info.getName())) {
-//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-//                    break;
-//                }
-//            }
-//        } catch (ClassNotFoundException ex) {
-//            java.util.logging.Logger.getLogger(GUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (InstantiationException ex) {
-//            java.util.logging.Logger.getLogger(GUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (IllegalAccessException ex) {
-//            java.util.logging.Logger.getLogger(GUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-//            java.util.logging.Logger.getLogger(GUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        }
-//        //</editor-fold>
-//
-//        /* Create and display the form */
-//        java.awt.EventQueue.invokeLater(new Runnable() {
-//            public void run() {
-//                GUI myGUI = new GUI();
-//                myGUI.setVisible(true);
-//            }
-//        });
-//    }
-    
+    public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(GUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(GUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(GUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(GUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                GUI myGUI = new GUI();
+                myGUI.setVisible(true);
+            }
+        });
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane ScrollPane;
     private javax.swing.JLabel cardImagePanel;
     private javax.swing.JButton drawCardButton;
     private javax.swing.JTextField gameStatsField;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField humanPlayerField;
     private javax.swing.JButton moveButton;
     private javax.swing.JButton playCardButton;
     private javax.swing.JList<String> roomList;

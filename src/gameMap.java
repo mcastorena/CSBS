@@ -21,24 +21,14 @@ import javax.swing.JLabel;
 public class gameMap extends JLabel{
     public gameMap() {
         this.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/CSULBMap5_1200x1437.png"))); // NOI18N
-    player player1 = new player(1,1,1,"MIGUEL", 500, 1200);
-    player player2 = new player(1,1,1,"kev", 500, 1250);
-    player player3 = new player(1,1,1,"ivan", 500, 1300);
+         model myModel = new model();
+
     }
     
-    player player1 = new player(1,1,1,"MIGUEL", 500, 1200);
-    player player2 = new player(1,1,1,"kev", 500, 1250);
-    player player3 = new player(1,1,1,"ivan", 500, 1300);
+    model myModel = new model();
     
-    public void movePlayers(){
-        player1.playerMove();
-        player2.playerMove();
-        player3.playerMove();
-    }
-    public void handleMove(){
-        movePlayers();
-        paintComponent(this.getGraphics());
-    }
+  
+    
 
     
     public void paintComponent(Graphics g)
@@ -47,10 +37,9 @@ public class gameMap extends JLabel{
     Graphics2D g2d = (Graphics2D)g;
     g2d.setColor(Color.RED);
     g2d.setFont(new Font("Monospaced", 1, 40));
-    System.out.println(player2.playerY());
-    g2d.drawString(player1.getName(), player1.playerX(), player1.playerY());
-    g2d.drawString(player2.getName(), player2.playerX(), player2.playerY());
-    g2d.drawString(player3.getName(), player3.playerX(), player3.playerY());
+    g2d.drawString(myModel.players.get(0).name, myModel.rooms.get((myModel.players.get(0).roomNumber)).xCoordinate, myModel.rooms.get((myModel.players.get(0).roomNumber)).yCoordinate);
+    g2d.drawString(myModel.players.get(1).name, myModel.rooms.get((myModel.players.get(1).roomNumber)).xCoordinate, myModel.rooms.get((myModel.players.get(1).roomNumber)).yCoordinate+50);
+    g2d.drawString(myModel.players.get(2).name, myModel.rooms.get((myModel.players.get(2).roomNumber)).xCoordinate, myModel.rooms.get((myModel.players.get(2).roomNumber)).yCoordinate+100);
     
     
   }
