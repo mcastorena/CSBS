@@ -95,5 +95,14 @@ public class player {
   public void incrementIntegrity(){
       this.Integrity += 1;
   }
+  
+  public void setQP(int points){
+      if (this.QualityPoints + points < 0) {
+      this.QualityPoints = 0;
+    }
+      else{
+        this.QualityPoints += points;
+      }
+  }
 
 }

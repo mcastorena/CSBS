@@ -131,7 +131,7 @@ public class chooseChip extends javax.swing.JDialog {
      */
     String selectedAttribute;
     
-    public chooseChip(boolean craft, boolean integrity, boolean learning){
+    public chooseChip(boolean learning, boolean craft, boolean integrity){
         this.craftButton.setEnabled(craft);
         this.learningButton.setEnabled(learning);
         this.integrityButton.setEnabled(integrity);
