@@ -86,5 +86,17 @@ public class player {
   {
     return this.QualityPoints;
   }
+  
+  public void incrementIntegrity(){
+      this.Integrity += 1;
+  }
+  
+  public void incrementCraft(){
+      this.Craft += 1;
+  }
+  
+  public void incrementLearning(){
+      this.Learning += 1;
+  }
 
 }
