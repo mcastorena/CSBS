@@ -15,18 +15,22 @@ import java.util.Collections;
 public class model {
     ArrayList<player> players = new ArrayList();
     ArrayList<room> rooms = new ArrayList();
+    cardDeck deck = new cardDeck();
     
     public model(){
         createPlayers();
         createRooms();
+        dealHand(players.get(0));
+        dealHand(players.get(1));
+        dealHand(players.get(2));
     }
     
     
     
     public void createPlayers(){
-        player player1 = new player(6,6,6,"Miguel",1);
-        player player2 = new player(1,2,3,"Kevin",1);
-        player player3 = new player(4,1,0,"Ivan",1);
+        player player1 = new player(6,6,6,"Miguel");
+        player player2 = new player(1,2,3,"Kevin");
+        player player3 = new player(4,1,0,"Ivan");
         
         this.players.add(player1);
         this.players.add(player2);
@@ -121,4 +125,10 @@ public class model {
     Collections.addAll(myRoom.adjacentRooms, new Integer[] { Integer.valueOf(15) });
     this.rooms.add(myRoom);
     }
+    
+    public void dealHand(player p){
+        for (int i = 0; i < 5; i++) {
+      p.receiveCard(this.deck.dealOneCard());
+    }
+}
 }

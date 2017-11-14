@@ -1,3 +1,6 @@
+
+import java.util.ArrayList;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -10,40 +13,28 @@
  */
 public class player {
   String name;
-  int room;
   int Craft;
   int Learning;
   int Integrity;
   int QualityPoints = 0;
   boolean humanPlayer = false;
-  //int xCoordinate; // depricated
-  //int yCoordinate;
+  ArrayList<card> hand = new ArrayList();
+  int roomNumber;
   
-  public player(int learning, int craft, int integrity, String name, int room){
+  public player(int learning, int craft, int integrity, String name){
     this.Craft = craft;
     this.Learning = learning;
     this.Integrity = integrity;
     this.name = name;
-    this.room = room;
-    //this.xCoordinate = X; // depriciated
-    //this.yCoordinate= Y;
-    
-    
+    this.roomNumber = 17;
+ 
   }
-//  public void playerMove(){ // depriciated
-//      this.xCoordinate += 75;
-//      this.yCoordinate += 25;
-//  }
-//  public float playerX(){
-//      return xCoordinate;
-//  }
-//  public float playerY(){
-//      return yCoordinate;
-//  }
   
-  public String currentStats()// this will probs be depriciated
+
+  
+  public String currentStats()
   {
-    return this.name + "    " + this.Learning + "         " + this.Craft + "      " + this.Integrity + "          " + this.QualityPoints + "\n";
+    return this.name + "    " + this.Learning + "   " + this.Craft + "  " + this.Integrity + "  " + this.QualityPoints + System.lineSeparator();
   }
   
   public String getName()
@@ -53,7 +44,7 @@ public class player {
   
   public int getRoom()
   {
-    return this.room;
+    return this.roomNumber;
   }
   
   public void setHuman(){
@@ -63,7 +54,7 @@ public class player {
   public void setRoom(int room)
   {
     
-    this.room = room;
+    this.roomNumber = room;
   }
   
   public int getLearning()
@@ -85,6 +76,32 @@ public class player {
   public int getQualityPoints()
   {
     return this.QualityPoints;
+  }
+  
+  public void incrementLearning(){
+      this.Learning += 1;
+  }
+  
+  public void incrementCraft(){
+      this.Craft += 1;
+  }
+  
+  public void incrementIntegrity(){
+      this.Integrity += 1;
+  }
+  
+  public void setQP(int points){
+      if (this.QualityPoints + points < 0) {
+      this.QualityPoints = 0;
+    }
+      else{
+        this.QualityPoints += points;
+      }
+  }
+  
+  public void receiveCard(card c)
+  {
+    this.hand.add(c);
   }
 
 }
