@@ -23,7 +23,9 @@ import javax.swing.JScrollPane;
 public class GUI extends javax.swing.JFrame {
    static gameMap myMap = new gameMap();
    static model myModel = new model();
-
+   int cardNum = 0;
+   int moves = 3;
+   int currentPlayer = 0;
     /**
      * Creates new form GUI
      */
@@ -34,7 +36,9 @@ public class GUI extends javax.swing.JFrame {
         myMap.myModel = this.myModel;
         setRoomList();
         setStats();
-        cardImagePanel.setIcon(myModel.players.get(0).hand.get(0).getImage());
+        setCardImg();
+        disableButtons();
+        drawCardButton.setEnabled(true);
     }
 
     /**
@@ -64,9 +68,25 @@ public class GUI extends javax.swing.JFrame {
         gameStatsField.setFont(new java.awt.Font("Monospaced", 0, 18)); // NOI18N
         gameStatsField.setHorizontalAlignment(javax.swing.JTextField.LEFT);
 
+        cardImagePanel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cardImagePanelMouseClicked(evt);
+            }
+        });
+
         playCardButton.setText("Play Card");
+        playCardButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                playCardButtonActionPerformed(evt);
+            }
+        });
 
         drawCardButton.setText("Draw Card");
+        drawCardButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                drawCardButtonActionPerformed(evt);
+            }
+        });
 
         moveButton.setText("Move");
         moveButton.addActionListener(new java.awt.event.ActionListener() {
@@ -127,23 +147,65 @@ public class GUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void moveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_moveButtonActionPerformed
+        if (moves > 0){
         int getRoom = myMap.myModel.players.get(0).roomNumber;
         int selectedRoom = getSelectedRoom();
-        System.out.println(selectedRoom);
         if (selectedRoom == -1){
             JOptionPane.showMessageDialog(null, "Please select a room");
             return;
         }else if(selectedRoom != -1){
         for(int i = 0; i <3;i++){
         myMap.myModel.players.get(i).roomNumber = myMap.myModel.rooms.get(getRoom).adjacentRooms.get(getSelectedRoom()).intValue();
-    }
-    setRoomList();
-    myMap.paintComponent(myMap.getGraphics());
+        }
+        setRoomList();
+        myMap.paintComponent(myMap.getGraphics());
+        moves -= 1;
+        if (moves == 0){moveButton.setEnabled(false);}
+    
+        }
         }
     }//GEN-LAST:event_moveButtonActionPerformed
+
+    private void cardImagePanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cardImagePanelMouseClicked
+        int cardsInHand = myModel.players.get(0).hand.size()-1;
+        int currentCard = cardNum;
+        
+        if((currentCard+1) <= cardsInHand){
+            cardNum += 1;
+            setCardImg();   
+        }else if(currentCard+1 > cardsInHand){
+            cardNum = 0;
+            setCardImg();
+        }
+    }//GEN-LAST:event_cardImagePanelMouseClicked
+
+    private void drawCardButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_drawCardButtonActionPerformed
+        myModel.players.get(0).hand.add(myModel.deck.dealOneCard());
+        drawCardButton.setEnabled(false);
+        moves = 3;
+        moveButton.setEnabled(true);
+        playCardButton.setEnabled(true);
+    }//GEN-LAST:event_drawCardButtonActionPerformed
+
+    private void playCardButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_playCardButtonActionPerformed
+        myModel.players.get(0).hand.get(cardNum).play(myModel.players.get(0));
+        disableButtons();
+        moves = 3;
+    }//GEN-LAST:event_playCardButtonActionPerformed
+    public void setCardImg(){
+        cardImagePanel.setIcon(myModel.players.get(0).hand.get(cardNum).getImage());
+    }
     
     public int getSelectedRoom(){
         return roomList.getSelectedIndex();
+    }
+    
+    
+    
+    public void disableButtons(){
+        moveButton.setEnabled(false);
+        playCardButton.setEnabled(false);
+        drawCardButton.setEnabled(false);
     }
     
     public void setRoomList(){

@@ -95,16 +95,25 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="cardImagePanel">
+      <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="cardImagePanelMouseClicked"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="playCardButton">
       <Properties>
         <Property name="text" type="java.lang.String" value="Play Card"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="playCardButtonActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="drawCardButton">
       <Properties>
         <Property name="text" type="java.lang.String" value="Draw Card"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="drawCardButtonActionPerformed"/>
+      </Events>
     </Component>
     <Container class="javax.swing.JScrollPane" name="ScrollPane">
 
