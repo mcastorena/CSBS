@@ -39,6 +39,7 @@ public class GUI extends javax.swing.JFrame {
         setCardImg();
         disableButtons();
         drawCardButton.setEnabled(true);
+        currentPlayField.setText(info);
     }
 
     /**
@@ -50,8 +51,6 @@ public class GUI extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        humanPlayerField = new javax.swing.JTextField();
-        gameStatsField = new javax.swing.JTextField();
         cardImagePanel = new javax.swing.JLabel();
         playCardButton = new javax.swing.JButton();
         drawCardButton = new javax.swing.JButton();
@@ -59,14 +58,12 @@ public class GUI extends javax.swing.JFrame {
         moveButton = new javax.swing.JButton();
         roomListScrollPane = new javax.swing.JScrollPane();
         roomList = new javax.swing.JList<>();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        gameStatsField = new javax.swing.JTextArea();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        currentPlayField = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        humanPlayerField.setFont(new java.awt.Font("Monospaced", 1, 16)); // NOI18N
-        humanPlayerField.setText("locationField");
-
-        gameStatsField.setFont(new java.awt.Font("Monospaced", 0, 18)); // NOI18N
-        gameStatsField.setHorizontalAlignment(javax.swing.JTextField.LEFT);
 
         cardImagePanel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -88,6 +85,9 @@ public class GUI extends javax.swing.JFrame {
             }
         });
 
+        ScrollPane.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+        ScrollPane.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+
         moveButton.setText("Move");
         moveButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -96,6 +96,16 @@ public class GUI extends javax.swing.JFrame {
         });
 
         roomListScrollPane.setViewportView(roomList);
+
+        gameStatsField.setColumns(20);
+        gameStatsField.setFont(new java.awt.Font("Monospaced", 1, 18)); // NOI18N
+        gameStatsField.setRows(5);
+        jScrollPane1.setViewportView(gameStatsField);
+
+        currentPlayField.setColumns(20);
+        currentPlayField.setFont(new java.awt.Font("Monospaced", 1, 18)); // NOI18N
+        currentPlayField.setRows(5);
+        jScrollPane2.setViewportView(currentPlayField);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -113,24 +123,26 @@ public class GUI extends javax.swing.JFrame {
                                 .addComponent(moveButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addComponent(roomListScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(cardImagePanel, javax.swing.GroupLayout.DEFAULT_SIZE, 253, Short.MAX_VALUE)
+                        .addComponent(cardImagePanel, javax.swing.GroupLayout.DEFAULT_SIZE, 189, Short.MAX_VALUE)
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(gameStatsField)
-                            .addComponent(humanPlayerField, javax.swing.GroupLayout.DEFAULT_SIZE, 876, Short.MAX_VALUE))))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 849, Short.MAX_VALUE)
+                            .addComponent(jScrollPane2))
+                        .addGap(27, 27, 27)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(ScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 487, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(ScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 479, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(gameStatsField, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(humanPlayerField, javax.swing.GroupLayout.DEFAULT_SIZE, 137, Short.MAX_VALUE))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 10, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(drawCardButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -154,11 +166,11 @@ public class GUI extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Please select a room");
             return;
         }else if(selectedRoom != -1){
-        for(int i = 0; i <3;i++){
-        myMap.myModel.players.get(i).roomNumber = myMap.myModel.rooms.get(getRoom).adjacentRooms.get(getSelectedRoom()).intValue();
-        }
+        myMap.myModel.players.get(0).roomNumber = myMap.myModel.rooms.get(getRoom).adjacentRooms.get(getSelectedRoom()).intValue();
+        
         setRoomList();
         myMap.paintComponent(myMap.getGraphics());
+        setStats();
         moves -= 1;
         if (moves == 0){moveButton.setEnabled(false);}
     
@@ -188,9 +200,20 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_drawCardButtonActionPerformed
 
     private void playCardButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_playCardButtonActionPerformed
-        myModel.players.get(0).hand.get(cardNum).play(myModel.players.get(0));
+        boolean success =myModel.players.get(0).hand.get(cardNum).play(myModel.players.get(0));
+        String message;
+        if (success){ 
+            message = myModel.players.get(0).name + " played " + myModel.players.get(0).hand.get(cardNum).name + " for " + myModel.players.get(0).hand.get(cardNum).reward+System.lineSeparator();
+        } else {
+            message = myModel.players.get(0).name + " played " + myModel.players.get(0).hand.get(cardNum).name + " failed"+System.lineSeparator();
+        }
+        setPlay(message);
+        setStats();
         disableButtons();
         moves = 3;
+        AITurn(1);
+        AITurn(2);
+        drawCardButton.setEnabled(true);
     }//GEN-LAST:event_playCardButtonActionPerformed
     public void setCardImg(){
         cardImagePanel.setIcon(myModel.players.get(0).hand.get(cardNum).getImage());
@@ -198,6 +221,21 @@ public class GUI extends javax.swing.JFrame {
     
     public int getSelectedRoom(){
         return roomList.getSelectedIndex();
+    }
+    
+    public void AITurn(int i){
+        myModel.players.get(i).hand.add(myModel.deck.dealOneCard());
+        int room = myModel.players.get(i).roomNumber;
+        myModel.players.get(i).roomNumber = myModel.rooms.get(room).adjacentRooms.get(0);//moves to closest adjacent room 
+        boolean success = myModel.players.get(i).hand.get(0).play(myModel.players.get(i));//plays 1st card
+        String message;
+        if (success){ 
+            message = myModel.players.get(i).name + " played " + myModel.players.get(i).hand.get(0).name + " for " + myModel.players.get(i).hand.get(0).reward +System.lineSeparator();
+        } else {
+            message = myModel.players.get(i).name + " played " + myModel.players.get(i).hand.get(0).name + " failed"+System.lineSeparator();
+        }
+        setPlay(message);
+        setStats();
     }
     
     
@@ -223,14 +261,23 @@ public class GUI extends javax.swing.JFrame {
     }
     this.roomList.setModel(adjacentRooms);
     }
+    String stats = "        Learning    Craft   Integrity   Quality Points " + System.lineSeparator();
     
     public void setStats(){
-        String stats = "    Learning    Craft   Integrity   Quality Points " + System.lineSeparator();
         for(int i = 0; i < 3 ; i++){
         stats += myModel.players.get(i).currentStats();
         }
+        stats+= System.lineSeparator();
+        stats += "Card in deck: "+ myModel.deck.deck.size() + "         Discards out of play: " + myModel.deck.discardDeck.size() + System.lineSeparator();
+        stats += "You are: "+ myModel.players.get(0).name +" and you are in " + myModel.rooms.get(myModel.players.get(0).roomNumber).name;
         System.out.print(stats);
         gameStatsField.setText(stats);   
+        stats = "        Learning    Craft   Integrity   Quality Points " + System.lineSeparator();
+    }
+    String info = "Human player is " + myModel.players.get(0).name + System.lineSeparator();
+    public void setPlay(String s){
+        info += s;
+        currentPlayField.setText(info);
     }
     
     public void setHumanPlayerField(){
@@ -284,9 +331,11 @@ public class GUI extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane ScrollPane;
     private javax.swing.JLabel cardImagePanel;
+    private javax.swing.JTextArea currentPlayField;
     private javax.swing.JButton drawCardButton;
-    private javax.swing.JTextField gameStatsField;
-    private javax.swing.JTextField humanPlayerField;
+    private javax.swing.JTextArea gameStatsField;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JButton moveButton;
     private javax.swing.JButton playCardButton;
     private javax.swing.JList<String> roomList;

@@ -31,7 +31,7 @@ public class model {
         player player1 = new player(6,6,6,"Miguel");
         player player2 = new player(1,2,3,"Kevin");
         player player3 = new player(4,1,0,"Ivan");
-        
+        player1.humanPlayer = true;
         this.players.add(player1);
         this.players.add(player2);
         this.players.add(player3);

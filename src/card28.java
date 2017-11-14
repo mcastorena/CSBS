@@ -27,6 +27,7 @@ public class card28 extends card
         if (p.humanPlayer)
         {
           chooseChip c = new chooseChip(true, true, true);
+          c.setVisible(true);
           if (c.selectedAttribute == "LRN") {
             p.incrementLearning();
           } else if (c.selectedAttribute == "INT") {

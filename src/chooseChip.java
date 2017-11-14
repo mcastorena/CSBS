@@ -1,3 +1,6 @@
+
+import java.util.concurrent.TimeUnit;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -16,6 +19,7 @@ public class chooseChip extends javax.swing.JDialog {
     public chooseChip(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        this.setVisible(true);
     }
 
     /**
@@ -131,10 +135,12 @@ public class chooseChip extends javax.swing.JDialog {
      */
     String selectedAttribute;
     
-    public chooseChip(boolean learning, boolean craft, boolean integrity){
+    public chooseChip(boolean learning, boolean craft, boolean integrity) throws InterruptedException{
         this.craftButton.setEnabled(craft);
         this.learningButton.setEnabled(learning);
         this.integrityButton.setEnabled(integrity);
+        this.setVisible(true);
+
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
