@@ -15,7 +15,7 @@ public class card26 extends card
     this.name = "Press the Right Floor";
     this.locationName = "Elevators";
     this.reward = "2 Craft Chips";
-    setImage("/images/cardm26.png");
+    setImage("images/cardm26.png");
   }
   
   public boolean play(player p)

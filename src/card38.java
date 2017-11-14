@@ -15,7 +15,7 @@ public class card38 extends card
     this.name = "Student Parking";
     this.locationName = "Student Parking";
     this.reward = "1 Craft Chip and Teleport to Lactation Lounge";
-    setImage("/images/cardm38.png");
+    setImage("images/cardm38.png");
   }
   
   public boolean play(player p)

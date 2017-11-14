@@ -15,7 +15,7 @@ public class card17 extends card
     this.name = "Learning Netbeans";
     this.locationName = "Lactation Lounge";
     this.reward = "5 Quality Points";
-    setImage("/images/cardm17.png");
+    setImage("images/cardm17.png");
   }
   
   public boolean play(player p)

@@ -15,7 +15,7 @@ public class card34 extends card
     this.name = "CHEM 111";
     this.locationName = "Any building not ECS";
     this.reward = "5 Quality Points";
-    setImage("/images/cardm34.png");
+    setImage("images/cardm34.png");
   }
   
   public boolean play(player p)

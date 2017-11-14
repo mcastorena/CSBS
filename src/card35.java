@@ -15,7 +15,7 @@ public class card35 extends card
     this.name = "Learning Linux";
     this.locationName = "Computer Lab";
     this.reward = "3 Quality Points and a Chip of your choice";
-    setImage("/images/cardm35.png");
+    setImage("images/cardm35.png");
   }
   
   public boolean play(player p)

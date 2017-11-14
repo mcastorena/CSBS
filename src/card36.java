@@ -15,7 +15,7 @@ public class card36 extends card
     this.name = "Make a Friend";
     this.locationName = "North or South Hall";
     this.reward = "3 Quality Points and a Chip of your choice";
-    setImage("/images/cardm36.png");
+    setImage("images/cardm36.png");
   }
   
   public boolean play(player p)

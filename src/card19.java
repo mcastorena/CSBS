@@ -15,7 +15,7 @@ public class card19 extends card
     this.name = "Score a Goal!";
     this.locationName = "George Allen Field";
     this.reward = "5 Quality Points and 1 Integrity Chip";
-    setImage("/images/cardm19.png");
+    setImage("images/cardm19.png");
   }
   
   public boolean play(player p)

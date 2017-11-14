@@ -38,7 +38,7 @@ public class chooseChip extends javax.swing.JDialog {
         setTitle("Select a Reward Chip");
         setModal(true);
 
-        craftButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/CraftChip.png"))); // NOI18N
+        craftButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("images/CraftChip.png"))); // NOI18N
         craftButton.setText("jButton1");
         craftButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -46,7 +46,7 @@ public class chooseChip extends javax.swing.JDialog {
             }
         });
 
-        integrityButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/IntegrityChip.png"))); // NOI18N
+        integrityButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("images/IntegrityChip.png"))); // NOI18N
         integrityButton.setText("integrityButton");
         integrityButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -54,7 +54,7 @@ public class chooseChip extends javax.swing.JDialog {
             }
         });
 
-        learningButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/LearningChip.png"))); // NOI18N
+        learningButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("images/LearningChip.png"))); // NOI18N
         learningButton.setText("learningButton");
         learningButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

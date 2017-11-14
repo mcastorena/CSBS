@@ -15,7 +15,7 @@ public class card18 extends card
     this.name = "Choosing a Major";
     this.locationName = "CECS Conference";
     this.reward = "5 Quality Points";
-    setImage("/images/cardm18.png");
+    setImage("images/cardm18.png");
   }
   
   public boolean play(player p)

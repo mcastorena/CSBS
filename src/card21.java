@@ -15,7 +15,7 @@ public class card21 extends card
     this.name = "Pass Soccer Class";
     this.locationName = "George Allen Field";
     this.reward = "5 Quality Points";
-    setImage("/images/cardm21.png");
+    setImage("images/cardm21.png");
   }
   
   public boolean play(player p)

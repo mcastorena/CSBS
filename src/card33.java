@@ -15,7 +15,7 @@ public class card33 extends card
     this.name = "Oral Communication";
     this.locationName = "Any building not ECS";
     this.reward = "4 Quality Points and a Chip of your choice";
-    setImage("/images/cardm33.png");
+    setImage("images/cardm33.png");
   }
   
   public boolean play(player p)

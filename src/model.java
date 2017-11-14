@@ -15,10 +15,14 @@ import java.util.Collections;
 public class model {
     ArrayList<player> players = new ArrayList();
     ArrayList<room> rooms = new ArrayList();
+    cardDeck deck = new cardDeck();
     
     public model(){
         createPlayers();
         createRooms();
+        dealHand(players.get(0));
+        dealHand(players.get(1));
+        dealHand(players.get(2));
     }
     
     
@@ -121,4 +125,10 @@ public class model {
     Collections.addAll(myRoom.adjacentRooms, new Integer[] { Integer.valueOf(15) });
     this.rooms.add(myRoom);
     }
+    
+    public void dealHand(player p){
+        for (int i = 0; i < 5; i++) {
+      p.receiveCard(this.deck.dealOneCard());
+    }
+}
 }

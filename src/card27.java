@@ -15,7 +15,7 @@ public class card27 extends card
     this.name = "Loud Buzzing";
     this.locationName = "EAT Room";
     this.reward = "1 Chip of your choice";
-    setImage("/images/cardm27.png");
+    setImage("images/cardm27.png");
   }
   
   public boolean play(player p)

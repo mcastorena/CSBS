@@ -15,7 +15,7 @@ public class card11 extends card
     this.name = "Buddy Up";
     this.locationName = "EAT Room or George Allen Field";
     this.reward = "1 Craft Chip or 1 Learning Chip";
-    setImage("/images/cardm11.png");
+    setImage("images/cardm11.png");
   }
   
   public boolean play(player p)

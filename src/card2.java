@@ -15,7 +15,7 @@ public class card2 extends card
     this.name = "Lunch at Bratwurst Hall";
     this.locationName = "Bratwurst Hall";
     this.reward = "1 Craft Token";
-    setImage("/images/cardm02.png");
+    setImage("images/cardm02.png");
   }
   
   public boolean play(player p)

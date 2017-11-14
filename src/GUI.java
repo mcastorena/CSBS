@@ -4,6 +4,7 @@ import java.awt.Font;
 import java.awt.Graphics2D;
 import java.util.ArrayList;
 import javax.swing.DefaultListModel;
+import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -32,6 +33,8 @@ public class GUI extends javax.swing.JFrame {
         ScrollPane.getViewport().add(myMap, WIDTH);
         myMap.myModel = this.myModel;
         setRoomList();
+        setStats();
+        cardImagePanel.setIcon(myModel.players.get(0).hand.get(0).getImage());
     }
 
     /**
@@ -59,9 +62,7 @@ public class GUI extends javax.swing.JFrame {
         humanPlayerField.setText("locationField");
 
         gameStatsField.setFont(new java.awt.Font("Monospaced", 0, 18)); // NOI18N
-        gameStatsField.setText("gameStatsField");
-
-        cardImagePanel.setText("cardImage");
+        gameStatsField.setHorizontalAlignment(javax.swing.JTextField.LEFT);
 
         playCardButton.setText("Play Card");
 
@@ -91,12 +92,12 @@ public class GUI extends javax.swing.JFrame {
                                 .addComponent(playCardButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(moveButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addComponent(roomListScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(31, 31, 31)
-                        .addComponent(cardImagePanel, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(gameStatsField, javax.swing.GroupLayout.DEFAULT_SIZE, 895, Short.MAX_VALUE)
-                            .addComponent(humanPlayerField))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(cardImagePanel, javax.swing.GroupLayout.DEFAULT_SIZE, 253, Short.MAX_VALUE)
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(gameStatsField)
+                            .addComponent(humanPlayerField, javax.swing.GroupLayout.DEFAULT_SIZE, 876, Short.MAX_VALUE))))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -104,26 +105,21 @@ public class GUI extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(ScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 487, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(gameStatsField, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(humanPlayerField))
+                        .addComponent(humanPlayerField, javax.swing.GroupLayout.DEFAULT_SIZE, 137, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(cardImagePanel, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(drawCardButton)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(playCardButton)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(moveButton)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(roomListScrollPane)))
-                        .addGap(0, 4, Short.MAX_VALUE)))
+                        .addComponent(drawCardButton)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(playCardButton)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(moveButton)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(roomListScrollPane))
+                    .addComponent(cardImagePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -167,7 +163,12 @@ public class GUI extends javax.swing.JFrame {
     }
     
     public void setStats(){
-        
+        String stats = "    Learning    Craft   Integrity   Quality Points " + System.lineSeparator();
+        for(int i = 0; i < 3 ; i++){
+        stats += myModel.players.get(i).currentStats();
+        }
+        System.out.print(stats);
+        gameStatsField.setText(stats);   
     }
     
     public void setHumanPlayerField(){

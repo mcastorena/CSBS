@@ -15,7 +15,7 @@ public class card23 extends card
     this.name = "A New Laptop";
     this.locationName = "Computer Lab";
     this.reward = "3 Quality Points and a chip of your choice";
-    setImage("/images/cardm23.png");
+    setImage("images/cardm23.png");
   }
   
   public boolean play(player p)

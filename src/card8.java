@@ -15,7 +15,7 @@ public class card8 extends card
     this.name = "Enjoying the Peace";
     this.locationName = "Japanese Gardens";
     this.reward = "1 Integrity Chip or 1 Learning Chip";
-    setImage("/images/cardm08.png");
+    setImage("images/cardm08.png");
   }
   
   public boolean play(player p)

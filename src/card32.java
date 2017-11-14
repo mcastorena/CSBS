@@ -15,7 +15,7 @@ public class card32 extends card
     this.name = "The Outpost";
     this.locationName = "Any space outside ECS except Fobidden Parking";
     this.reward = "1 Chip of your choice";
-    setImage("/images/cardm32.png");
+    setImage("images/cardm32.png");
   }
   
   public boolean play(player p)

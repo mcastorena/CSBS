@@ -15,7 +15,7 @@ public class card4 extends card
     this.name = "Professor Murgolo's CECS 174";
     this.locationName = "ECS 302";
     this.reward = "1 Learning Chip";
-    setImage("/images/cardm04.png");
+    setImage("images/cardm04.png");
   }
   
   public boolean play(player p)

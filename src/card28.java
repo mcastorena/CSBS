@@ -15,7 +15,7 @@ public class card28 extends card
     this.name = "Professor Englert";
     this.locationName = "CECS Conference";
     this.reward = "1 Chip of your choice";
-    setImage("/images/cardm28.png");
+    setImage("images/cardm28.png");
   }
   
   public boolean play(player p)

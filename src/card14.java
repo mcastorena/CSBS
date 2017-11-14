@@ -16,7 +16,7 @@ public class card14 extends card
     this.name = "Math 123";
     this.locationName = "ECS 302 or 308";
     this.reward = "5 Quality Points";
-    setImage("/images/cardm14.png");
+    setImage("images/cardm14.png");
   }
   
   public boolean play(player p)

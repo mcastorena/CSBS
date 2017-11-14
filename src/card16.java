@@ -15,7 +15,7 @@ public class card16 extends card
     this.name = "KIN 253: Learning the Rules of Soccer";
     this.locationName = "George Allen Field";
     this.reward = "2 Craft Chips";
-    setImage("/images/cardm16.png");
+    setImage("images/cardm16.png");
   }
   
   public boolean play(player p)

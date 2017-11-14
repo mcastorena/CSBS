@@ -15,7 +15,7 @@ public class card7 extends card
     this.name = "Finding the Lab";
     this.locationName = "Elevators";
     this.reward = "1 Integrity Chip";
-    setImage("/images/cardm07.png");
+    setImage("images/cardm07.png");
   }
   
   public boolean play(player p)

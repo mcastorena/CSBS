@@ -15,7 +15,7 @@ public class card5 extends card
     this.name = "CECS 100";
     this.locationName = "ECS 308";
     this.reward = "1 Craft Chip";
-    setImage("/images/cardm05.png");
+    setImage("images/cardm05.png");
   }
   
   public boolean play(player p)

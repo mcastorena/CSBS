@@ -15,7 +15,7 @@ public class card12 extends card
     this.name = "Late for Class";
     this.locationName = "Any space except Forbidden Parking";
     this.reward = "1 Craft Chip and Teleport to Lactation Lounge";
-    setImage("/images/cardm12.png");
+    setImage("images/cardm12.png");
   }
   
   public boolean play(player p)

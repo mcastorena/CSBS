@@ -15,7 +15,7 @@ public class card6 extends card
     this.name = "Exercising Mind and Body";
     this.locationName = "Student Recreation";
     this.reward = "1 Integrity Chip";
-    setImage("/images/cardm06.png");
+    setImage("images/cardm06.png");
   }
   
   public boolean play(player p)

@@ -15,7 +15,7 @@ public class card24 extends card
     this.name = "Meet the Dean";
     this.locationName = "North or South Hall";
     this.reward = "5 Quality Points and 1 Game Card";
-    setImage("/images/cardm24.png");
+    setImage("images/cardm24.png");
   }
   
   public boolean play(player p)

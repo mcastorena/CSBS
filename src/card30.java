@@ -15,7 +15,7 @@ public class card30 extends card
     this.name = "Elective Class";
     this.locationName = "Library";
     this.reward = "1 Learning Chip and 1 Game Card";
-    setImage("/images/cardm30.png");
+    setImage("images/cardm30.png");
   }
   
   public boolean play(player p)

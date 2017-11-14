@@ -15,7 +15,7 @@ public class card37 extends card
     this.name = "Enjoying Nature";
     this.locationName = "Any space outside ECS";
     this.reward = "1 Craft Chip and Teleport to Lactation Lounge";
-    setImage("/images/cardm37.png");
+    setImage("images/cardm37.png");
   }
   
   public boolean play(player p)

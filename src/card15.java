@@ -15,7 +15,7 @@ public class card15 extends card
     this.name = "Physics 151";
     this.locationName = "ECS 308";
     this.reward = "5 Quality Points";
-    setImage("/images/cardm15.png");
+    setImage("images/cardm15.png");
   }
   
   public boolean play(player p)

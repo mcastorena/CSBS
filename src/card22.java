@@ -15,7 +15,7 @@ public class card22 extends card
     this.name = "Fall in the Pond";
     this.locationName = "Japanese Garden";
     this.reward = "1 Integrity Chip and 1 Craft Chip";
-    setImage("/images/cardm22.png");
+    setImage("images/cardm22.png");
   }
   
   public boolean play(player p)

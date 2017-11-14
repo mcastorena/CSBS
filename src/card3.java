@@ -15,7 +15,7 @@ public class card3 extends card
     this.name = "Researching Compilers";
     this.locationName = "Library";
     this.reward = "1 Learning Chip";
-    setImage("/images/cardm03.png");
+    setImage("images/cardm03.png");
   }
   
   public boolean play(player p)

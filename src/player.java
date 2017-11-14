@@ -1,3 +1,6 @@
+
+import java.util.ArrayList;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -15,8 +18,7 @@ public class player {
   int Integrity;
   int QualityPoints = 0;
   boolean humanPlayer = false;
-  int xCoordinate;
-  int yCoordinate;
+  ArrayList<card> hand = new ArrayList();
   int roomNumber;
   
   public player(int learning, int craft, int integrity, String name){
@@ -28,16 +30,11 @@ public class player {
  
   }
   
-  public float playerX(){
-      return xCoordinate;
-  }
-  public float playerY(){
-      return yCoordinate;
-  }
+
   
   public String currentStats()
   {
-    return this.name + "    " + this.Learning + "         " + this.Craft + "      " + this.Integrity + "          " + this.QualityPoints + "\n";
+    return this.name + "    " + this.Learning + "   " + this.Craft + "  " + this.Integrity + "  " + this.QualityPoints + System.lineSeparator();
   }
   
   public String getName()
@@ -100,6 +97,11 @@ public class player {
       else{
         this.QualityPoints += points;
       }
+  }
+  
+  public void receiveCard(card c)
+  {
+    this.hand.add(c);
   }
 
 }

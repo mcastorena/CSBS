@@ -15,7 +15,7 @@ public class card29 extends card
     this.name = "Soccer Goalie";
     this.locationName = "George Allen Field";
     this.reward = "5 Quality Points and 1 Game Card";
-    setImage("/images/cardm29.png");
+    setImage("images/cardm29.png");
   }
   
   public boolean play(player p)

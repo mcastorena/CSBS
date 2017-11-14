@@ -15,7 +15,7 @@ public class card25 extends card
     this.name = "Program Crashes";
     this.locationName = "Lactation Lounge";
     this.reward = "5 Quality Points and a chip of your choice";
-    setImage("/images/cardm25.png");
+    setImage("images/cardm25.png");
   }
   
   public boolean play(player p)

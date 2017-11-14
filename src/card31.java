@@ -15,7 +15,7 @@ public class card31 extends card
     this.name = "Professor Hoffman";
     this.locationName = "Any room in ECS except Lactation Lounge";
     this.reward = "5 Quality Points and 2 Game Cards";
-    setImage("/images/cardm31.png");
+    setImage("images/cardm31.png");
   }
   
   public boolean play(player p)

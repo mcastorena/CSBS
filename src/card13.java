@@ -15,7 +15,7 @@ public class card13 extends card
     this.name = "The Big Game";
     this.locationName = "Pyramid";
     this.reward = "1 Craft Chip and Teleport to the Lactation Lounge";
-    setImage("/images/cardm13.png");
+    setImage("images/cardm13.png");
   }
   
   public boolean play(player p)

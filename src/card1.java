@@ -15,7 +15,7 @@ public class card1 extends card
     this.name = "Math 122";
     this.locationName = "Library";
     this.reward = "1 Knowledge Chip or 1 Honor Chip";
-    setImage("/images/cardm01.png");
+    setImage("images/cardm01.png");
   }
   
   public boolean play(player p)

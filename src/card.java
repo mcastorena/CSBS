@@ -15,6 +15,7 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
+import javax.swing.Icon;
 
 public abstract class card
 {
@@ -24,7 +25,7 @@ public abstract class card
   String fail;
   ArrayList<Integer> locations = new ArrayList();
   boolean activeCard;
-  Image img;
+  Icon img;
   int abilityLearning;
   int abilityCraft;
   int abilityIntegrity;
@@ -56,17 +57,10 @@ public abstract class card
   
   public void setImage(String i)
   {
-    try
-    {
-      this.img = ImageIO.read(new File(i));
-    }
-    catch (IOException ex)
-    {
-      Logger.getLogger(card.class.getName()).log(Level.SEVERE, null, ex);
-    }
+      this.img = new javax.swing.ImageIcon(getClass().getResource(i));
   }
   
-  public Image getImage()
+  public Icon getImage()
   {
     return this.img;
   }

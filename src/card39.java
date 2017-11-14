@@ -15,7 +15,7 @@ public class card39 extends card
     this.name = "Goodbye Professor";
     this.locationName = "Room of Retirement";
     this.reward = "10 Quality Points";
-    setImage("/images/cardm39.png");
+    setImage("images/cardm39.png");
   }
   
   public boolean play(player p)

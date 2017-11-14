@@ -18,7 +18,7 @@ public class card9 extends card
     this.name = "Parking Violation";
     this.locationName = "Forbidden Parking";
     this.reward = "1 Learning Chip and discard 1 Game Card Card for 1 Learning Chip";
-    setImage("/images/cardm09.png");
+    setImage("images/cardm09.png");
   }
   
   public boolean play(player p)
