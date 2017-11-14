@@ -27,10 +27,7 @@ public class player {
     this.roomNumber = 17;
  
   }
-  public void playerMove(){
-      this.xCoordinate += 75;
-      this.yCoordinate += 25;
-  }
+  
   public float playerX(){
       return xCoordinate;
   }
